@@ -1,0 +1,6 @@
+- targets: # url;humanname
+    - http://example.com;example.com
+    - https://google.com;google.com
+    - https://github.com;github.com
+    - https://status.azure.com;status.azure.com
+    - https://health.aws.amazon.com;health.aws.amazon.com

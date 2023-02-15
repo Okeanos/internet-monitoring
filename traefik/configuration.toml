@@ -1,0 +1,34 @@
+[http.middlewares]
+	[http.middlewares.compress-response.compress]
+	[http.middlewares.browser-compatibility.headers.customResponseHeaders]
+		X-UA-Compatible = "IE=Edge"
+
+	[http.middlewares.standard-processing.chain]
+		middlewares = ["browser-compatibility", "compress-response"]
+
+[http.routers]
+	[http.routers.traefik-api]
+		entryPoints = ["traefik-api"]
+		rule = "PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
+		middlewares = ["standard-processing"]
+		service = "api@internal"
+	[http.routers.grafana]
+		entryPoints = ["http"]
+		rule = "Host(`internet-monitoring.test`)"
+		middlewares = ["standard-processing"]
+		service = "grafana"
+
+[http.services]
+	[http.services.noop]
+		[http.services.noop.LoadBalancer]
+			[[http.services.noop.LoadBalancer.servers]]
+				url = "http://127.0.0.1"
+	[http.services.grafana]
+		[http.services.grafana.LoadBalancer]
+			[http.services.grafana.loadBalancer.healthCheck]
+				path = "/api/health"
+				interval = '10s'
+				timeout = '3s'
+				followRedirects = false
+			[[http.services.grafana.LoadBalancer.servers]]
+				url = "http://grafana:9000"

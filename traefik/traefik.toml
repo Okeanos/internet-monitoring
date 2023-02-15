@@ -1,0 +1,34 @@
+[global]
+	checkNewVersion = false
+	sendAnonymousUsage = false
+
+[entryPoints]
+	[entryPoints.http]
+		address = ":80"
+	[entryPoints.traefik-api]
+		address = ":8080"
+
+[log]
+	level = "info"
+	format = "json"
+
+[accessLog]
+	format = "json"
+	[accessLog.fields]
+		defaultMode = "keep"
+		[accessLog.fields.names]
+			"ClientUsername" = "drop"
+		[accessLog.fields.headers]
+			defaultMode = "keep"
+			[accessLog.fields.headers.names]
+				"Authorization" = "drop"
+
+[api]
+	insecure = false
+	dashboard = true
+	debug = false
+
+[providers]
+	[providers.file]
+		directory = "/configuration"
+		watch = true
