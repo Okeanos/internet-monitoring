@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install EditorConfig Checker
-        run: pip install editorconfig-checker
-      - name: Check EditorConfig
-        run: editorconfig-checker .
-      - name: Install yamllint
-        run: pip install yamllint
-      - name: Lint YAML files
-        run: yamllint .
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.20
+      - name: Run EditorConfig Checker
+        run: go run github.com/editorconfig-checker/editorconfig-checker@v2.7.0 .
+      - name: Run yamllint
+        run: |
+          pip install yamllint
+          yamllint .
       - uses: bewuethr/shellcheck-action@v2
+      - uses: DavidAnson/markdownlint-cli2-action@v9
