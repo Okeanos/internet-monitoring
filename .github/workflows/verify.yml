@@ -12,11 +12,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
         with:
-          go-version: 1.20
+          go-version: '1.20'
       - name: Run EditorConfig Checker
         run: |
-          go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@v2.7.0 .
-          editorconfig-checker .
+          go run github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@v2.7.0 .
       - name: Run yamllint
         run: |
           pip install yamllint
