@@ -41,7 +41,7 @@ datasources:
       tlsAuth: false
       tlsAuthWithCACert: false
     # <string> json object of data that will be encrypted.
-    #secureJsonData:
+    # secureJsonData:
     #  tlsCACert: "..."
     #  tlsClientCert: "..."
     #  tlsClientKey: "..."
