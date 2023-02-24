@@ -1,6 +1,6 @@
 name: Verify
 
-on: [ push, pull_request ]
+on: [ push, pull_request, workflow_dispatch ] # yamllint disable-line rule:truthy-check-keys
 
 permissions:
   contents: read
@@ -16,13 +16,9 @@ jobs:
       - name: Run EditorConfig Checker
         run: |
           go run github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@2.7.0 --exclude .git
-        continue-on-error: true
       - name: Run yamllint
         run: |
           pip install yamllint
           yamllint .
-        continue-on-error: true
       - uses: bewuethr/shellcheck-action@v2
-        continue-on-error: true
       - uses: DavidAnson/markdownlint-cli2-action@v9
-        continue-on-error: true
