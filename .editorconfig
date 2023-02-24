@@ -12,9 +12,9 @@ indent_style = tab # https://old.reddit.com/r/javascript/comments/c8drjo/nobody_
 indent_size = tab
 trim_trailing_whitespace = true
 
-[*.{rules, yaml, yml}]
+[*.{rules,yaml,yml}]
 indent_style = space
 tab_width = 2
 
-[*.{env, env.template}]
+[*.{env,env.template}]
 insert_final_newline = false
