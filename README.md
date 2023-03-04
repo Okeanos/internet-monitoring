@@ -6,7 +6,7 @@ and  [github-exporter](https://github.com/infinityworksltd/github-exporter) to c
 ## Pre-requisites
 
 - [Docker](https://docs.docker.com/engine/installation/)
-	- [Docker Compose](https://docs.docker.com/compose/install/)
+  - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Installation
 
@@ -21,14 +21,14 @@ Now edit the `.env` file and set the Grafana admin password.
 Afterwards modify the preconfigured settings for
 
 - Grafana:
-	- `grafana/provisioning/*`
+  - `grafana/provisioning/*`
 - Prometheus:
-	- `prometheus/alert.rules`
-	- `prometheus/prometheus.yml`
+  - `prometheus/alert.rules`
+  - `prometheus/prometheus.yml`
 
 Add the following entry to your `hosts` file:
 
-```
+```txt
 127.0.0.1 internet-monitoring.test
 ```
 
@@ -50,4 +50,3 @@ Additional projects were used to inspire this version:
 
 - [Jeff Geerling's Internet Pi](https://github.com/geerlingguy/internet-pi)
 - [Max Rydahl Andersen's Internet Monitoring](https://github.com/maxandersen/internet-monitoring)
-
